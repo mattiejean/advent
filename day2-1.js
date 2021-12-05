@@ -1,19 +1,20 @@
+
+
 const fs = require('fs');
 const readline = require('readline');
 
-enum Direction {
-    UP = "up",
-    DOWN = "down",
-    FORWARD = "forward",
-    BACKWARD = "backward"
+const Direction = {
+    UP : "up",
+    DOWN : "down",
+    FORWARD : "forward"
 }
 
 class Command {
-    direction: Direction;
-    units: number;
-    constructor(command : string) {
+    direction;
+    units;
+    constructor(command) {
         const commandArray = command.split(' ');
-        this.direction = commandArray[0] as Direction;
+        this.direction = commandArray[0];
         this.units = parseInt(commandArray[1]);
     }
 }
@@ -21,15 +22,16 @@ class Command {
 class Submarine {
     depth = 0;
     position = 0;
-    
-    issueCommand(command : Command) { // string
+    aim = 0;
+
+    issueCommand(command) { // string
         if (command.direction == Direction.UP) {
             this.depth -= command.units;
         } else if (command.direction == Direction.DOWN) {
             this.depth += command.units;
         } else if (command.direction == Direction.FORWARD) {
             this.position += command.units
-        }
+        }        
     }
 
 }
