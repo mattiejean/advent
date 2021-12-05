@@ -22,7 +22,7 @@ async function processLineByLine() {
     const boards = new bingo.Boards(lines);
 
     const game = new bingo.Bingo(numbers, boards);
-    const winningBoard = game.play();
+    const winningBoard = game.playForLast();
     if (winningBoard) {
         console.log("BINGO!!!!");
         console.log(winningBoard.score());
